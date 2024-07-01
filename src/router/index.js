@@ -22,6 +22,10 @@ const routes = [
     name: "team",
     component: TeamView,
   },
+  {
+    path: "*",
+    redirect: { name: "dashboard" },
+  },
 ];
 
 const router = new VueRouter({
