@@ -40,7 +40,12 @@
           </v-tooltip>
         </v-flex>
       </v-layout>
-      <v-card flat class="pa-5" v-for="project in projects" :key="project.id">
+      <v-card
+        flat
+        class="pa-5"
+        v-for="project in paginatedProjects"
+        :key="project.id"
+      >
         <v-layout
           row
           wrap
@@ -68,6 +73,12 @@
           </v-flex>
         </v-layout>
       </v-card>
+      <!-- Pagination controls -->
+      <v-pagination
+        v-model="currentPage"
+        :length="pages"
+        @input="changePage"
+      ></v-pagination>
     </v-container>
   </div>
 </template>
@@ -79,11 +90,27 @@ export default {
   data: function () {
     return {
       projects: [],
+      currentPage: 1,
+      pageSize: 6, // Number of projects per page
     };
   },
   methods: {
     sortBy(prop) {
       this.projects.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));
+    },
+    changePage(page) {
+      this.currentPage = page;
+    },
+  },
+  computed: {
+    // Calculate total number of pages based on pageSize
+    pages() {
+      return Math.ceil(this.projects.length / this.pageSize);
+    },
+    // Slice myProjects array to display only projects for the current page
+    paginatedProjects() {
+      const startIndex = (this.currentPage - 1) * this.pageSize;
+      return this.projects.slice(startIndex, startIndex + this.pageSize);
     },
   },
   created() {

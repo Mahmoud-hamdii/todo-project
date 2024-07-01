@@ -67,7 +67,7 @@
                 <v-flex>
                   <v-btn
                     color="primary"
-                    width="98%"
+                    width="100%"
                     @click="submit"
                     :loading="loading"
                   >
@@ -75,12 +75,12 @@
                   </v-btn>
                 </v-flex>
                 <v-flex>
-                  <v-btn color="primary" width="98%" @click="clear">
+                  <v-btn color="primary" width="100%" @click="clear">
                     clear
                   </v-btn>
                 </v-flex>
                 <v-flex>
-                  <v-btn color="primary" width="98%" @click="close">
+                  <v-btn color="primary" width="100%" @click="close">
                     close
                   </v-btn>
                 </v-flex>
@@ -195,3 +195,8 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.layout {
+  gap: 5px;
+}
+</style>

@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import DashboardView from "../views/DashboardView.vue";
-import AboutView from "../views/AboutView.vue";
 import ProjectsView from "../views/ProjectsView.vue";
 import TeamView from "../views/TeamView.vue";
 
@@ -12,11 +11,6 @@ const routes = [
     path: "/",
     name: "dashboard",
     component: DashboardView,
-  },
-  {
-    path: "/about",
-    name: "about",
-    component: AboutView,
   },
   {
     path: "/projects",
